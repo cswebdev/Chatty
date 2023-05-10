@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework import generics
 from rest_framework import permissions
 from .models import Chat, ChatRoom
-from .serializers import ChatSerializer
+from .serializers import ChatSerializer, ChatRoomSerializer
 from .permissions import IsOwnerOrReadOnly
 
 # Create your views here.
