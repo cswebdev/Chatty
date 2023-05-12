@@ -2,7 +2,7 @@ import { Box, useTheme } from "@mui/material";
 
 
 
-function Main() {
+function Home() {
 
 return (
 <>
@@ -10,4 +10,4 @@ return (
 </>
 )
 }
-export default Main;
+export default Home;

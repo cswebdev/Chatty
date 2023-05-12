@@ -1,11 +1,12 @@
 //import { useState } from "react";
 import { Routes, Route} from "react-router-dom";
 import NavBar from "./components/global/NavBar.jsx";
-import Main from "./components/global/Main.jsx";
 import root from "./index.js";
 import { ThemeProvider} from "@mui/material";
 import CssBaseline from '@mui/material/CssBaseline';
 import {ColorModeContext, useMode} from "./theme";
+import Home from "./components/scenes/Home.jsx";
+import LogIn from "./components/login/LoginForm.jsx";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -17,11 +18,12 @@ function App() {
 <div className="App">
   <main className="content">
     <NavBar />
-    <Main />
+    
     </main>
     <Routes>
       <Route path="/" element={<root />} />
-      <Route path="/main" index element={<Main />} />
+      <Route path="/home" index element={<Home />} />
+      <Route path="/login" element={<LogIn />} />
       </Routes>
     
     </div>

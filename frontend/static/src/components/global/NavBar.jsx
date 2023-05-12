@@ -6,25 +6,32 @@ import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import { Navigate, NavLink, useNavigate } from "react-router-dom";
 
 const Topbar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const colorMode = useContext(ColorModeContext);
   const [anchorEl, setAnchorEl] = useState(null);
+  const navigate = useNavigate();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const handleClose = (event) => {
     setAnchorEl(null);
+    if (event.target.innerText === "Log In") {
+      navigate("/login");
+    }
   };
 
   return (
+
     <Box
      display="flex" 
-     justifyContent="right" p={4}
+        justifyContent="space-between"
      
      sx={{
         backgroundColor:
@@ -39,8 +46,19 @@ const Topbar = () => {
       }}
     
     >
+        {/* NAV LINKS */}
+        <Box display="flex" justifyContent="left" p={2}>
+        <NavLink to="/home" style={{ textDecoration: 'none' }}>
+        <IconButton >
+            <HomeOutlinedIcon style={{ fontSize: "30px" }}/>
+        </IconButton>
+        </NavLink>
+</Box>
       {/* ICONS */}
-      <Box display="flex">
+      <Box display="flex"
+      
+       justifyContent="" p={2}>
+        
         <IconButton onClick={colorMode.toggleColorMode} >
           {theme.palette.mode === "dark" ? (
             <DarkModeOutlinedIcon style={{ fontSize: "30px" }} />
@@ -71,6 +89,7 @@ const Topbar = () => {
           }}
         >
           <MenuItem onClick={handleClose}>Profile</MenuItem>
+          <MenuItem onClick={handleClose}>Log In</MenuItem>
           <MenuItem onClick={handleClose}>Log out</MenuItem>
         </Menu>
       </Box>
